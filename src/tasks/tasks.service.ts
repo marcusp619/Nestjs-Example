@@ -84,6 +84,26 @@ export class TasksService {
 
   //   return task;
   // }
+  
+  // async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+  //   const { title, description } = createTaskDto;
+
+  //   // creates task obj
+  //   const task: Task = this.tasksRepository.create({
+  //     title,
+  //     description,
+  //     status: TaskStatus.OPEN,
+  //   })
+    
+  //   // save to db
+  //   await this.tasksRepository.save(task);
+
+  //   return task;
+  // }
+  
+  createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksRepository.createTask(createTaskDto);
+  }
 
   // updateTaskStatus(id: string, status: TaskStatus) {
   //   const task = this.getTaskById(id);

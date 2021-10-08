@@ -19,6 +19,10 @@ export class TasksService {
   //   return this.tasks;
   // }
 
+  getTasks(filterDto: GetTasksFilterDto): Promise<Task[]> {
+    return this.tasksRepository.getTasks(filterDto);
+  }
+
   // getTasksWithFilters(filterDto: GetTasksFilterDto): Task[] {
   //   const { status, search } = filterDto;
 
@@ -121,8 +125,10 @@ export class TasksService {
   
   async updateTaskStatus(id: string, status: TaskStatus): Promise<Task> {
     const task = await this.getTaskById(id);
+    
     task.status = status;
     await this.tasksRepository.save(task);
+
     return task;
   }
 }
